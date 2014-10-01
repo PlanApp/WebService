@@ -1,15 +1,12 @@
 import psycopg2
-#try:
-# conn = psycopg2.connect("dbname='freetalk' user='@' host='@' password='@)
-#except:
-# print "I am unable to connect to the database"
+
 class pgsql:
 	def __init__(self):
 		try:
-			DBNAME="@"
-			USER="@"
-			HOST="@"
-			PASSWD="@"
+			DBNAME="planapp_db"
+			USER="planapp"
+			HOST="localhost"
+			PASSWD="nolase.1"
 			self.conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %(DBNAME, USER, HOST,PASSWD))
 			self.cur = self.conn.cursor()
 			print "--------------------"
@@ -24,8 +21,8 @@ class pgsql:
 
 	def select_multi(self,sql):
 		self.cur.execute('%s' %(sql))
-			query = self.cur.fetchall() #multiples filas
-			return query
+		query = self.cur.fetchall() #multiples filas
+		return query
 
 	def select(self,sql):
 		self.cur.execute('%s' %(sql))
