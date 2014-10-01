@@ -113,14 +113,14 @@ def signup():
 def registro():
         mail = request.form['mail']
         nombre = request.form['nombre']
-	#password = request.form['password']
-	#fecha_nacimiento = request.form['fecha_nacimiento']
-	#sexo = request.form['sexo']
+	password = request.form['password']
+	fecha_nacimiento = request.form['fecha_nacimiento']
+	sexo = request.form['sexo']
 	#INSERTA DATOS EN FUNCION
 	#SI ES UN VALOR
 	#SI ES OTRO VALOR
 
-        data = {'mail': str(mai),'nombre': str(nombre)}
+        data = {'mail': str(mail),'nombre': str(nombre)}
         respuesta = json.dumps(data)
         return Response(respuesta, content_type='application/json')
 
