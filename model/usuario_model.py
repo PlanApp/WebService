@@ -11,9 +11,16 @@ class Usuario:
 		self.fecha_nacimiento=""
 		self.sexo=""
 
-	def getUserByName(self, namex):
+	def getUserLogin(self, mailx):
 		try:
-			query = cur.select("select id, name, password, rol from users where name='%s';" %( namex ))
+			query = cur.select("select id_usuario, password from usuario where mail='%s';" %( mailx ))
+			return query
+		except:
+			return (-1)		
+
+	def getUserByName(self, mailx):
+		try:
+			query = cur.select("select id_usuario, mail, password, nombre, fecha_nacimiento, sexo from usuario where mail='%s';" %( mailx ))
 			return query
 		except:
 			return (-1)

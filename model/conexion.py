@@ -42,3 +42,4 @@ class pgsql:
 
 	def close(self):
 		conn.close()
+
