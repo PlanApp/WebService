@@ -72,18 +72,18 @@ def index():
 #LOGIN
 @app.route('/login', methods=['POST'])
 @crossdomain(origin='*')
-def signup():
+def login():
 	user = "";
 	passwd="";
-	user = request.form['user']
-	passwd = request.form['passwd']
-	Userx = bdd.User()
-	Id = Userx.login(user,passwd)
-	print "login:"+user+" - "+passwd
-	if (Id !=0):
-		data = {'id': str(Id),'user': str(user), 'edo':'ok'} #USUARIO VALIDO
+	mail = request.form['mail']
+	password = request.form['password']
+	usuario = bdd.Fusuario()
+	id_usuario = usuario.login(mail,password)
+	print "login:"+mail+" - "+password
+	if (id_usuario !=0):
+		data = {'id': str(id_usuario),'mail': str(mail), 'edo':'ok'} #USUARIO VALIDO
 	else:
-		data = {"id":"0", "user": str(user), "edo":"no"} #USUARIO INVALIDO
+		data = {"id":"0", "mail": str(mail), "edo":"no"} #USUARIO INVALIDO
 	respuesta = json.dumps(data)
 	print respuesta
 	return Response(respuesta, content_type='application/json')
