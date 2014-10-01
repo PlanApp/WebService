@@ -62,11 +62,51 @@ def crossdomain(origin=None, methods=None, headers=None,max_age=21600, attach_to
 
 app = Flask(__name__)
 
+#INDEX
 @app.route('/')
 @app.route('/index')
 def index():
 	return "<br>PLANAPP WEBSERVER<br>======================<br><br>Hello, World!\n"
 
+
+#LOGIN
+@app.route('/login', methods=['POST'])
+@crossdomain(origin='*')
+def signup():
+	user = "";
+	passwd="";
+	user = request.form['user']
+	passwd = request.form['passwd']
+	Userx = bdd.User()
+	Id = Userx.login(user,passwd)
+	print "login:"+user+" - "+passwd
+	if (Id !=0):
+		data = {'id': str(Id),'user': str(user), 'edo':'ok'} #USUARIO VALIDO
+	else:
+		data = {"id":"0", "user": str(user), "edo":"no"} #USUARIO INVALIDO
+	respuesta = json.dumps(data)
+	print respuesta
+	return Response(respuesta, content_type='application/json')
+
+
+#REGISTRO
+@app.route('/registro', methods=['POST'])
+@crossdomain(origin='*')
+def registro():
+        mail = request.form['mail']
+        nombre = request.form['nombre']
+	password = request.form['password']
+	fecha_nacimiento = request.form['fecha_nacimiento']
+	sexo = request.form['sexo']
+	#INSERTA DATOS EN FUNCION
+	#SI ES UN VALOR
+	#SI ES OTRO VALOR
+
+        data = {'mail': str(mai),'nombre': str(nombre)}
+        respuesta = json.dumps(data)
+        return Response(respuesta, content_type='application/json')
+
+	
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
