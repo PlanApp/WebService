@@ -6,7 +6,7 @@
 #
 
 import os
-
+import functions
 #!flask/bin/python
 from flask import Flask
 from flask import json
@@ -69,15 +69,29 @@ def index():
 	return "<br>PLANAPP WEBSERVER<br>======================<br><br>Hello, World!\n"
 
 
+#TEST
+#@app.route('/test', methods=['GET'])
+@app.route('/test', methods=['POST'])
+@crossdomain(origin='*')
+def get_usersong():
+	#var = request.args['var']
+	var = request.form['var']
+	print var
+        data = {'var': str(var)}
+        respuesta = json.dumps(data)
+        return Response(respuesta, content_type='application/json')
+
+
 #LOGIN
 @app.route('/login', methods=['POST'])
 @crossdomain(origin='*')
-def login():
+def signup():
+	print "Login"
 	user = "";
 	passwd="";
 	mail = request.form['mail']
 	password = request.form['password']
-	usuario = bdd.Fusuario()
+	usuario = functions.Fusuario()
 	id_usuario = usuario.login(mail,password)
 	print "login:"+mail+" - "+password
 	if (id_usuario !=0):
@@ -87,6 +101,10 @@ def login():
 	respuesta = json.dumps(data)
 	print respuesta
 	return Response(respuesta, content_type='application/json')
+#        data = {'mail': str(mail),'password': str(password)}
+#        respuesta = json.dumps(data)
+#        return Response(respuesta, content_type='application/json')
+
 
 
 #REGISTRO
@@ -95,9 +113,9 @@ def login():
 def registro():
         mail = request.form['mail']
         nombre = request.form['nombre']
-	password = request.form['password']
-	fecha_nacimiento = request.form['fecha_nacimiento']
-	sexo = request.form['sexo']
+	#password = request.form['password']
+	#fecha_nacimiento = request.form['fecha_nacimiento']
+	#sexo = request.form['sexo']
 	#INSERTA DATOS EN FUNCION
 	#SI ES UN VALOR
 	#SI ES OTRO VALOR

@@ -10,9 +10,9 @@ class Fusuario(usuario_model.Usuario):
 		self.usuariox = usuario_model.Usuario()
 
 	def login(self, mailx, passwordx):
-		user = self.usuariox.getUserByMail(mailx)
+		user = self.usuariox.getUserLogin(mailx)
 		if (str(user)!= "None"):
-			if(user[2] == passwordx):
+			if(user[1] == passwordx):
 				return user[0]
 			else:
 				return 0
