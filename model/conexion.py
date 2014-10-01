@@ -3,10 +3,10 @@ import psycopg2
 class pgsql:
 	def __init__(self):
 		try:
-			DBNAME="planapp_db"
-			USER="planapp"
-			HOST="localhost"
-			PASSWD="nolase.1"
+			DBNAME="@"
+			USER="@"
+			HOST="@"
+			PASSWD="@"
 			self.conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %(DBNAME, USER, HOST,PASSWD))
 			self.cur = self.conn.cursor()
 			print "--------------------"
