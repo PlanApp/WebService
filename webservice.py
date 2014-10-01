@@ -70,7 +70,8 @@ def index():
 
 
 #LOGIN
-@app.route('/login', methods=['POST'])
+#@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET'])
 @crossdomain(origin='*')
 def login():
 	user = "";
