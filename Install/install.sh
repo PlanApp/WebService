@@ -1,4 +1,4 @@
-echo "GNU Linux: \n 1)-Debian \n 2)-Ubuntu \n 3)-Centeo \n 4)-RedHat \n Enter the number:"
+echo -e "GNU Linux: \n 1)-Debian \n 2)-Ubuntu \n 3)-Centeo \n 4)-RedHat \n Enter the number:"
 read distro
 
 
