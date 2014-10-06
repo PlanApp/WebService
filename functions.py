@@ -20,3 +20,5 @@ class Fusuario(usuario_model.Usuario):
 			return 0
 
 		
+	def registrar(self, mailx, nombrex, passwordx, fecha_nacimientox, sexox):
+		self.usuariox.InsertarUsuario(mailx, nombrex, passwordx, fecha_nacimientox, sexox)
