@@ -28,7 +28,7 @@ class Usuario:
 	def ID(self, mail):
 		try:
 			query = cur.select("select id_usuario from usuario where mail='%s';" %( mailx ))
-			return query
+			return query[0]
 		except:
 			return (-1)
 		
