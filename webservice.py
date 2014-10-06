@@ -121,7 +121,7 @@ def registro():
 	usuario = functions.Fusuario()
 	idx = usuario.getID(mail)
 	#SI ES UN VALOR
-	if (idx > 0):
+	if (idx < 0):
 		usuario.registrar(mail, nombre, password, fecha_nacimiento, sexo)
     		data = {'estado':'ok'}
 	    	respuesta = json.dumps(data)
