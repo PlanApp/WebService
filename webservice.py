@@ -122,12 +122,12 @@ def registro():
 	#SI ES UN VALOR
 	if (idx > 0):
 		usuario.registrar(mail, nombre, password, fecha_nacimiento, sexo)
-    	data = {'estado':'ok'}
-	    respuesta = json.dumps(data)
+    		data = {'estado':'ok'}
+	    	respuesta = json.dumps(data)
 	#SI ES OTRO VALOR
 	else:		
-    	data = {'estado':'error'}
-	    respuesta = json.dumps(data)
+	    	data = {'estado':'error'}
+	    	respuesta = json.dumps(data)
 
 	return Response(respuesta, content_type='application/json')
 
