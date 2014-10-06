@@ -19,6 +19,9 @@ class Fusuario(usuario_model.Usuario):
 		else:
 			return 0
 
-		
+	def getID(self, mailx):
+		user = self.usuariox.ID(mailx)
+		return user[0]
+
 	def registrar(self, mailx, nombrex, passwordx, fecha_nacimientox, sexox):
 		self.usuariox.InsertarUsuario(mailx, nombrex, passwordx, fecha_nacimientox, sexox)

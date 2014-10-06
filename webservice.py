@@ -112,23 +112,29 @@ def signup():
 @app.route('/registro', methods=['POST'])
 @crossdomain(origin='*')
 def registro():
-        mail = request.form['mail']
-        nombre = request.form['nombre']
+	mail = request.form['mail']
+    nombre = request.form['nombre']
 	password = request.form['password']
 	fecha_nacimiento = request.form['fecha_nacimiento']
 	sexo = request.form['sexo']
 	#INSERTA DATOS EN FUNCION
+	idx = usuario.getID(mail)
 	#SI ES UN VALOR
+	if (idx > 0):
+		usuario.registrar(mail, nombre, password, fecha_nacimiento, sexo)
+    	data = {'estado':'ok'}
+	    respuesta = json.dumps(data)
 	#SI ES OTRO VALOR
+	else:		
+    	data = {'estado':'error'}
+	    respuesta = json.dumps(data)
 
-        data = {'mail': str(mail),'nombre': str(nombre)}
-        respuesta = json.dumps(data)
-        return Response(respuesta, content_type='application/json')
+	return Response(respuesta, content_type='application/json')
 
 	
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
-        app.debug = True
-    	app.run(host='0.0.0.0', port=port)
+    app.debug = True
+  	app.run(host='0.0.0.0', port=port)
 
