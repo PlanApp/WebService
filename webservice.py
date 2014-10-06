@@ -118,6 +118,7 @@ def registro():
 	fecha_nacimiento = request.form['fecha_nacimiento']
 	sexo = request.form['sexo']
 	#INSERTA DATOS EN FUNCION
+	usuario = functions.Fusuario()
 	idx = usuario.getID(mail)
 	#SI ES UN VALOR
 	if (idx > 0):
