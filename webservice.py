@@ -113,7 +113,7 @@ def signup():
 @crossdomain(origin='*')
 def registro():
 	mail = request.form['mail']
-    nombre = request.form['nombre']
+	nombre = request.form['nombre']
 	password = request.form['password']
 	fecha_nacimiento = request.form['fecha_nacimiento']
 	sexo = request.form['sexo']
@@ -135,6 +135,6 @@ def registro():
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
-    app.debug = True
+    	app.debug = True
   	app.run(host='0.0.0.0', port=port)
 
