@@ -35,5 +35,5 @@ class Usuario:
 
 	def InsertarUsuario(self, mailx, nombrex, passwordx, fecha_nacimientox, sexox):
 			#cur.insert("insert into usuario (mail, nombre, password, fecha_nacimiento, sexo) values ('%s', '%s', '%s', '%s', '%s');" %(mailx, nombrex, passwordx, fecha_nacimientox, sexox))
-			cur.insert("insert into usuario (mail, nombre, password, fecha_nacimiento, sexo) values ('%s', '%s', '%s', '%s', '$s'););" %(mailx, nombrex, passwordx, fecha_nacimientox, sexox))	
+			cur.insert("insert into usuario (mail, nombre, password, fecha_nacimiento, sexo) values ('%s', '%s', '%s', '%s', '%s'););" %(mailx, nombrex, passwordx, fecha_nacimientox, sexox))	
 		
