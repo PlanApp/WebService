@@ -30,7 +30,7 @@ class Usuario:
 			query = cur.select("select id_usuario from usuario where mail='%s';" %( mailx ))
 			return query[0]
 		except:
-			return (-1)
+			return 0
 		
 
 	def InsertarUsuario(self, mailx, nombrex, passwordx, fecha_nacimientox, sexox):
