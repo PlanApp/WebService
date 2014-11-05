@@ -70,12 +70,12 @@ def index():
 
 
 #TEST
-#@app.route('/test', methods=['GET'])
-@app.route('/test', methods=['POST'])
+@app.route('/test', methods=['GET'])
+#@app.route('/test', methods=['POST'])
 @crossdomain(origin='*')
-def get_usersong():
-	#var = request.args['var']
-	var = request.form['var']
+def test():
+	var = request.args['var']
+	#var = request.form['var']
 	print var
         data = {'var': str(var)}
         respuesta = json.dumps(data)
@@ -83,8 +83,8 @@ def get_usersong():
 
 
 #LOGIN
-#@app.route('/login', methods=['POST'])
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['POST'])
+#@app.route('/login', methods=['GET'])
 @crossdomain(origin='*')
 def signup():
 	print "Login"
@@ -97,8 +97,10 @@ def signup():
 	print "login:"+mail+" - "+password
 	if (id_usuario !=0):
 		data = {'id': str(id_usuario),'mail': str(mail), 'edo':'ok'} #USUARIO VALIDO
+		#data = {'mail': str(mail), 'password': str(password)} #USUARIO VALIDO
 	else:
-		data = {"id":"0", "mail": str(mail), "edo":"no"} #USUARIO INVALIDO
+		data = {'id': str(0),'mail': str(mail), 'edo':'mal'} #USUARIO VALIDO
+		#data = {"mail": str(mail), "password":str(password)} #USUARIO INVALIDO
 	respuesta = json.dumps(data)
 	print respuesta
 	return Response(respuesta, content_type='application/json')

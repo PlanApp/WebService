@@ -1,1 +1,1 @@
-python webservice.py
+python webservice.py > webservice.log
