@@ -1,7 +1,7 @@
 #
-# 	WEBSERVER PLANAPP		
-# 	v.1.0				
-# 	05/09/2014			
+# 	WEBSERVER PLANAPP
+# 	v.1.0
+# 	05/09/2014
 # 	leonardbravoillanes@gmail.com
 #
 
@@ -97,16 +97,12 @@ def signup():
 	print "login:"+mail+" - "+password
 	if (id_usuario !=0):
 		data = {'id': str(id_usuario),'mail': str(mail), 'edo':'ok'} #USUARIO VALIDO
-		#data = {'mail': str(mail), 'password': str(password)} #USUARIO VALIDO
 	else:
 		data = {'id': str(0),'mail': str(mail), 'edo':'mal'} #USUARIO VALIDO
-		#data = {"mail": str(mail), "password":str(password)} #USUARIO INVALIDO
 	respuesta = json.dumps(data)
 	print respuesta
 	return Response(respuesta, content_type='application/json')
-#        data = {'mail': str(mail),'password': str(password)}
-#        respuesta = json.dumps(data)
-#        return Response(respuesta, content_type='application/json')
+
 
 
 
@@ -130,16 +126,47 @@ def registro():
     		data = {'estado':'ok'}
 	    	respuesta = json.dumps(data)
 	#SI ES OTRO VALOR
-	else:		
+	else:
 	    	data = {'estado':'error'}
 	    	respuesta = json.dumps(data)
-
 	return Response(respuesta, content_type='application/json')
 
-	
+
+#LOGIN
+@app.route('/recomienda', methods=['POST'])
+#@app.route('/login', methods=['GET'])
+@crossdomain(origin='*')
+def signup():
+    print "Recomendador"
+    user = "";
+    passwd="";
+    id_usuario = request.form['id']
+    longitud = request.form['longitud']
+    latitud = request.form['latitud']
+    acompanante = request.form['acompanante']
+    dinero = request.form['dinero']
+
+    print "a recomendar:"+id_usuario+"-"+longitud+"-"+latitud+"-"+acompanante+"-"+dinero
+
+    data=[
+        {'id':'1','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'},
+        {'id':'2','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'},
+        {'id':'3','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'}
+    ]
+
+    #usuario = functions.Fusuario()
+    #id_usuario = usuario.login(mail,password)
+    #print "login:"+mail+" - "+password
+    #if (id_usuario !=0):
+    #    data = {'id': str(id_usuario),'mail': str(mail), 'edo':'ok'} #USUARIO VALIDO
+    #else:
+    #    data = {'id': str(0),'mail': str(mail), 'edo':'mal'} #USUARIO VALIDO
+    respuesta = json.dumps(data)
+    print respuesta
+    return Response(respuesta, content_type='application/json')
+
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
     	app.debug = True
   	app.run(host='0.0.0.0', port=port)
-
