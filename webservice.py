@@ -136,7 +136,7 @@ def registro():
 @app.route('/recomienda', methods=['POST'])
 #@app.route('/login', methods=['GET'])
 @crossdomain(origin='*')
-def signup():
+def recomendar():
     print "Recomendador"
     user = "";
     passwd="";
