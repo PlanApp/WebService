@@ -147,11 +147,12 @@ def recomendar():
     dinero = request.form['dinero']
 
     print "a recomendar:"+id_usuario+"-"+longitud+"-"+latitud+"-"+acompanante+"-"+dinero
+#    data = {'estado':'error'}
 
     data=[
-        {'id':'1','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'},
-        {'id':'2','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'},
-        {'id':'3','img':'http://ur1.ca/iwxkv', 'nombre':'Nombre Lugar', 'latitud':'-33', 'longitud':'44', 'telefono':'027244377'}
+        {'id':'1','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 1', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'},
+        {'id':'2','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 2', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'},
+        {'id':'3','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 3', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'}
     ]
 
     #usuario = functions.Fusuario()
