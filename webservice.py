@@ -118,25 +118,27 @@ def registro():
 	#INSERTA DATOS EN FUNCION
 	usuario = functions.Fusuario()
 	idx = usuario.getID(mail)
+	print mail+"-"+nombre+"-"+password+"-"+fecha_nacimiento+"-"+sexo
 	print "SACO ID:"
 	print idx
 	#SI ES UN VALOR
 	if (idx <= 0):
 		usuario.registrar(mail, nombre, password, fecha_nacimiento, sexo)
-    		data = {'estado':'ok'}
+    		data = {'edo':'ok'}
 	    	respuesta = json.dumps(data)
 	#SI ES OTRO VALOR
 	else:
-	    	data = {'estado':'error'}
+	    	data = {'edo':'error'}
 	    	respuesta = json.dumps(data)
+	print respuesta
 	return Response(respuesta, content_type='application/json')
 
 
 #LOGIN
-@app.route('/recomienda', methods=['POST'])
+@app.route('/recomienda_panoramas', methods=['POST'])
 #@app.route('/login', methods=['GET'])
 @crossdomain(origin='*')
-def recomendar():
+def recomendar_panoramas():
     print "Recomendador"
     user = "";
     passwd="";
@@ -150,21 +152,38 @@ def recomendar():
 #    data = {'estado':'error'}
 
     data=[
+        {'id_1':'1','lugar_1':'Nombre Lugar 1','id_2':'2', 'lugar_2':'Nombre Lugar 2','id_3':'3', 'lugar_3':'Nombre Lugar 3','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png'},
+        {'id_1':'1','lugar_1':'Nombre Lugar 1','id_2':'2', 'lugar_2':'Nombre Lugar 2','id_3':'3', 'lugar_3':'Nombre Lugar 3','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png'},
+        {'id_1':'1','lugar_1':'Nombre Lugar 1','id_2':'2', 'lugar_2':'Nombre Lugar 2','id_3':'3', 'lugar_3':'Nombre Lugar 3','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png'}
+    ]
+
+    respuesta = json.dumps(data)
+    print respuesta
+    return Response(respuesta, content_type='application/json')
+
+
+@app.route('/recomienda_lugares', methods=['POST'])
+#@app.route('/login', methods=['GET'])
+@crossdomain(origin='*')
+def recomendar_lugares():
+    print "Recomendador"
+    user = "";
+    passwd="";
+    id_usuario = request.form['id']#id_lugar
+
+    print "a recomendar:"+id_usuario+"-"+longitud+"-"+latitud+"-"+acompanante+"-"+dinero
+#    data = {'estado':'error'}
+
+    data=[
         {'id':'1','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 1', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'},
         {'id':'2','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 2', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'},
         {'id':'3','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 3', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'}
     ]
 
-    #usuario = functions.Fusuario()
-    #id_usuario = usuario.login(mail,password)
-    #print "login:"+mail+" - "+password
-    #if (id_usuario !=0):
-    #    data = {'id': str(id_usuario),'mail': str(mail), 'edo':'ok'} #USUARIO VALIDO
-    #else:
-    #    data = {'id': str(0),'mail': str(mail), 'edo':'mal'} #USUARIO VALIDO
     respuesta = json.dumps(data)
     print respuesta
     return Response(respuesta, content_type='application/json')
+
 
 
 if __name__ == '__main__':
