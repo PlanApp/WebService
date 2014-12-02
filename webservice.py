@@ -169,10 +169,11 @@ def recomendar_lugares():
     print "Recomendador"
     user = "";
     passwd="";
-    id_usuario = request.form['id']#id_lugar
+    id1 = request.form['id1']#id_lugar
+    id2 = request.form['id2']#id_lugar
+    id3 = request.form['id3']#id_lugar
 
-    print "a recomendar:"+id_usuario+"-"+longitud+"-"+latitud+"-"+acompanante+"-"+dinero
-#    data = {'estado':'error'}
+    print "lugares:"+id1+"-"+id2+"-"+id3
 
     data=[
         {'id':'1','img':'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/512/Maps-Pin-Place-icon.png', 'nombre':'Nombre Lugar 1', 'latitud':'-33', 'longitud':'44', 'descrip':'bla bla', 'tipo':'Tipo'},
@@ -183,6 +184,30 @@ def recomendar_lugares():
     respuesta = json.dumps(data)
     print respuesta
     return Response(respuesta, content_type='application/json')
+
+
+@app.route('/historico', methods=['POST'])
+#@app.route('/login', methods=['GET'])
+@crossdomain(origin='*')
+def historico():
+    print "Histotico"
+    user = "";
+    passwd="";
+
+    id_user = request.form['id_usuario']#id_usuario
+    id1 = request.form['id1']#id_lugar
+    id2 = request.form['id2']#id_lugar
+    id3 = request.form['id3']#id_lugar
+
+    print id_user+" lugares:"+id1+"-"+id2+"-"+id3
+    panorama = functions.Fpanoramas()
+    panorama.saveHistorico(id_user, id1, id2, id3)
+    data = {'edo':'ok'}
+
+    respuesta = json.dumps(data)
+    print respuesta
+    return Response(respuesta, content_type='application/json')
+
 
 
 
